@@ -6,6 +6,12 @@
 		{
 			"path": ".",
 			"name": "Root"
+		},
+		{
+			"path": "koa-with-babel-debug"
+		},
+		{
+			"path": "jest-with-babel"
 		}
 	],
 	"settings": {

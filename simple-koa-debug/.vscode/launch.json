@@ -21,6 +21,6 @@
       "type": "node",
       "request": "attach",
       "processId": "${command:PickProcess}"
-    }
+    },
   ]
 }

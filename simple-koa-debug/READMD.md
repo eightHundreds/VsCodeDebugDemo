@@ -9,7 +9,7 @@ npm install
 ```
 
 1.  打断点
-2.  F5
+2.  F5(选择 `启动程序(simple-koa-debug)`)
 3.  请求 http://localhost:10086
 
 # Attach 调试
@@ -21,7 +21,8 @@ launch 调试,即调试时自动启动应用
     "type": "node",
     "request": "launch",
     "name": "启动程序",
-    "program": "${workspaceFolder}\\index.js",
+    /* 可以把index.js改为${file},即调试当前打开的文件,但一般koa应用都是从一个入口启动的 */
+    "program": "${workspaceFolder}\\index.js", 
 },
 ```
 
