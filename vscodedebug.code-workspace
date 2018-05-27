@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "simple-koa-debug"
+		},
+		{
+			"path": ".",
+			"name": "Root"
+		}
+	],
+	"settings": {
+		
+	}
+}
