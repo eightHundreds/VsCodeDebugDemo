@@ -1,14 +1,14 @@
 {
 	"folders": [
 		{
-			"path": "simple-koa-debug"
+			"path": "simple-koa"
 		},
 		{
 			"path": ".",
 			"name": "Root"
 		},
 		{
-			"path": "koa-with-babel-debug"
+			"path": "koa-with-babel"
 		},
 		{
 			"path": "jest-with-babel"
