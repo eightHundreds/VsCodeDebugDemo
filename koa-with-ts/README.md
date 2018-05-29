@@ -55,7 +55,7 @@ npm install typescript ts-node --save-dev
 
 - target 设置将代码编译为es6
 - module 选择模块系统,node环境当然要用commonjs
-- outDir 编译结构输出目录
+- outDir 编译结果输出目录
 - exclude 忽略文件夹,tsc默认会编译当前文件夹,用该配置忽略掉不想被编译的文件(夹)
 
 添加调试配置,直接执行ts-node的内部文件命令行`ts-node`内部就是调用`ts-node\\dist\\bin.js`
@@ -113,8 +113,8 @@ tsconfig.json就用上面的,不用改
 
 # Tips
 
-babel和tsc都有一个`--watch`选项,意思是如果文件被修改就自动编译
-上面介绍的调试以及babel场景中,都用了"preLaunchTask",让调试启动前编译代码,有时候你会再没修改代码时就再次启动调试,这样就会导致无用的编译,如果这个编译时间又长,就造成大量的浪费.
+babel和tsc都有一个`--watch`选项,意思是如果文件被修改就自动编译  
+上面介绍的调试以及babel场景中,都用了"preLaunchTask",让调试启动前编译代码,有时候你在没修改代码时就再次启动调试,这样就会产生无用的编译,如果这个编译时间又长,就造成大量的浪费.
 一种做法是删掉"preLaunchTask",手动执行`tsc`/`babel`,而这里可以用`--watch`来自动化执行
 
 # 参考
