@@ -9,7 +9,7 @@ npm install
 ```
 
 1.  打断点
-2.  F5(选择 `启动程序(simple-koa-debug)`)
+2.  F5(选择 `启动程序(simple-koa)`)
 3.  请求 http://localhost:10086
 
 # Attach 调试

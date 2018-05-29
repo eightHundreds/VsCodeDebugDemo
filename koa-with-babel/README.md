@@ -11,16 +11,22 @@ npm install
 ## 演示1:babel-register
 
 1. 打断点
-2. F5(选择 `启动程序(koa-with-babel-debug)`)
+2. F5(选择 `启动程序(koa-with-babel)`)
 3. 请求 http://localhost:10086
 
 ## 演示2:babel-cli
 
-1. 先把index.js中的`require("babel-register")`注释掉
+0. 打断点
+1. 把index.js中的`require("babel-register")`注释掉
 2. babel . --out-dir build --ignore .\node_modules\ --source-maps
-3. F5(选择 `启动程序builded(koa-with-babel-debug)`)
+3. F5(选择 `启动程序builded(koa-with-babel)`)
 4. 请求 http://localhost:10086
 
+## 演示3:babel-cli之bebel-node
+
+1. 打断点
+2. F5(选择 `启动程序with babel-node(koa-with-babel)`)
+4. 请求 http://localhost:10086
 
 # Babel
 
@@ -76,7 +82,12 @@ require("babel-register")
 require('babel-polyfill')
 require('./app')
 ```
-在index.js不能用任何高级语法,但被index.js引用的文件就能用了
+
+- 在index.js不能用任何高级语法,但被index.js引用的文件就能用了
+- babel主要负责支持新语法,而新规范中引入的新的类(如Promise)则需要polyfill支持
+  - 在入口处导入`require('babel-polyfill')`
+  - `babel-runtime`与它并不冲突,在引入`babel-runtime`前,polyfill会以全局变量的形式注入,引入后则通过require导入,详情请看[官方文档](https://babeljs.cn/docs/plugins/transform-runtime#%E4%B8%BA%E4%BB%80%E4%B9%88),或者通过[演示2:babel-cli](#演示2:babel-cli)编译后的代码查看
+
 
 最后一步配置`.babelrc`
 ``` JSON
@@ -103,7 +114,7 @@ require('./app')
     "program": "${workspaceFolder}\\index.js",
     "sourceMaps": true,
     "smartStep": true,
-    "skipFiles": ["${workspaceRoot}\\node_modules\\**\\*.js", "<node_internals>\\**\\*.js"]
+    "skipFiles": ["${workspaceRoot}\\node_modules\\**\\*.js", "<node_internals>/**/*.js"]
 },
 ```
 
@@ -137,12 +148,6 @@ require('./app')
 
 > babel-register不适合用于生产环境下,主要推荐用于简单的情况下。
 
-
-
-### 参考资料
-
-- [transform-runtime](https://babeljs.cn/docs/plugins/transform-runtime#%E4%B8%BA%E4%BB%80%E4%B9%88)
-
 ## babel-cli
 
 这是比较正式的方式,将源码编译,发布时就用编译后的代码,为此你需要为你的项目写一些run-script或脚本规范构建流程,但这不是本文重点,可以参考[这个](https://github.com/17koa/koa2-startkit)(的bin目录)
@@ -166,12 +171,89 @@ npm install babel-preset-env babel-plugin-transform-runtime babel-cli --save-dev
     "sourceMaps": true,
     "smartStep": true,
     "outFiles": ["${workspaceRoot}\\build\\**\\*.js"],
-    "skipFiles": ["${workspaceRoot}\\node_modules\\**\\*.js", "<node_internals>\\**\\*.js"]
+    "skipFiles": ["${workspaceRoot}\\node_modules\\**\\*.js", "<node_internals>/**/*.js"]
 }
 ```
 
 剩下的就是[演示2:babel-cli](#演示2:babel-cli)
 
+### babel-node
+
+官方强烈不推荐在生产环境下使用babel-node
+
+同时这也是最简单的调试方式,它也会自动编译,所以不需要babel-register,也会自动引入polyfiil,所以不需要babel-polyfiil,因为是生产环境,对生成代码的质量没要求,所以也不需要transform-runtime
+
+步骤:
+
+1. 安装
+```
+npm install babel-preset-env babel-cli --save-dev
+```
+2. 配置babelrc,参考前文
+3. 调试配置(注意program是app.js,而不是index.js,runtimeExecutable默认是node现在改为babel-node)
+``` JSON
+{
+    "type": "node",
+    "request": "launch",
+    "name": "启动程序with babel-node",
+    "runtimeExecutable": "babel-node",
+    "program": "${workspaceFolder}\\app.js",
+    "sourceMaps": true,
+    "smartStep": true,
+    "skipFiles": ["${workspaceRoot}\\node_modules\\**\\*.js", "<node_internals>/**/*.js"]
+},
+```
+
+
+# 补充
+
+## 自动编译
+
+在演示2:babel-cli中,你需要自己手动编译,这里可以借助vscode的task将编译自动化
+你可以直接F5(选择 `启动程序with auto compile(koa-with-babel)`)查看效果**(注意一定要先注释掉index.js的`require("babel-register")`)**
+
+具体步骤:
+
+在.vscode文件夹中创建tasks.json
+``` JSON
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "compile",
+      "type": "shell",
+      "command": "babel",
+      "args": [
+        ".",
+        "--out-dir",
+        "build",
+        "--ignore",
+        ".\\node_modules\\,.\\build\\",
+        "--source-maps"
+      ]
+    }
+  ]
+}
+```
+修改调试配置,与启动程序builded相比,就多了一个`"preLaunchTask": "compile",`
+``` JSON
+{
+    "type": "node",
+    "request": "launch",
+    "name": "启动程序with auto compile",
+    "program": "${workspaceFolder}\\build\\index.js",
+    "sourceMaps": true,
+    "smartStep": true,
+    "preLaunchTask": "compile",
+    "outFiles": ["${workspaceRoot}\\build\\**\\*.js"],
+    "skipFiles": ["${workspaceRoot}\\node_modules\\**\\*.js", "<node_internals>/**/*.js"]
+}
+```
+
+
+
+
 # 参考
 
 - https://pranavprakash.net/2017/10/18/debugging-es2017-async-await-in-vs-code-using-source-maps/
+- [transform-runtime](https://babeljs.cn/docs/plugins/transform-runtime#%E4%B8%BA%E4%BB%80%E4%B9%88)

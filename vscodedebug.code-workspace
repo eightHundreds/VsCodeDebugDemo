@@ -12,6 +12,9 @@
 		},
 		{
 			"path": "jest-with-babel"
+		},
+		{
+			"path": "koa-with-ts"
 		}
 	],
 	"settings": {

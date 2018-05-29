@@ -11,7 +11,17 @@
       "program": "${workspaceFolder}\\index.js",
       "sourceMaps": true,
       "smartStep": true,
-      "skipFiles": ["${workspaceRoot}\\node_modules\\**\\*.js", "<node_internals>\\**\\*.js"]
+      "skipFiles": ["${workspaceRoot}\\node_modules\\**\\*.js", "<node_internals>/**/*.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "启动程序with babel-node",
+      "runtimeExecutable": "babel-node",
+      "program": "${workspaceFolder}\\app.js",
+      "sourceMaps": true,
+      "smartStep": true,
+      "skipFiles": ["${workspaceRoot}\\node_modules\\**\\*.js", "<node_internals>/**/*.js"]
     },
     {
       "type": "node",
@@ -21,7 +31,18 @@
       "sourceMaps": true,
       "smartStep": true,
       "outFiles": ["${workspaceRoot}\\build\\**\\*.js"],
-      "skipFiles": ["${workspaceRoot}\\node_modules\\**\\*.js", "<node_internals>\\**\\*.js"]
+      "skipFiles": ["${workspaceRoot}\\node_modules\\**\\*.js", "<node_internals>/**/*.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "启动程序with auto compile",
+      "program": "${workspaceFolder}\\build\\index.js",
+      "sourceMaps": true,
+      "smartStep": true,
+      "preLaunchTask": "compile",
+      "outFiles": ["${workspaceRoot}\\build\\**\\*.js"],
+      "skipFiles": ["${workspaceRoot}\\node_modules\\**\\*.js", "<node_internals>/**/*.js"]
     }
   ]
 }
