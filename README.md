@@ -1,12 +1,26 @@
 # 前言
 
 探究vscode的debug技巧
-每种情况都放到一个文件夹下
+每种场景都放到一个文件夹下
 
-# 情况列表
+# 场景列表
+
+我暂时将场景分为基础和非基础,基础场景的README会介绍的更详细.非基础场景可能就是由基础场景组合而成,我会假定你看过基础场景,在README中不会写得太详细
+
+我选择koa作为主角,它是个非常简单的框架,简单地像个库,而且又有express的影子.所以不管你是想调试一个库,还是一个web应用,都能快速地从案例代码获得帮助
+
+**基础场景**
 
 - [X] simple-koa koajs应用的简单使用
 - [X] koa-with-babel 使用babel的koajs应用
+- [X] koa-with-ts 使用typescript的koajs应用
+- [] simple-jest jest单元测试
+
+**非基础场景**
+
+- [] jest-with-babel 使用babel的jest单元测试
+- [] jest-with-ts 使用typescript的单元测试
+
 
 
 # 参考资料
