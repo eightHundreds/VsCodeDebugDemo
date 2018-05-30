@@ -14,7 +14,7 @@
 - [X] simple-koa koajs应用的简单使用
 - [X] koa-with-babel 使用babel的koajs应用
 - [X] koa-with-ts 使用typescript的koajs应用
-- [] simple-jest jest单元测试
+- [x] simple-jest jest单元测试
 
 **非基础场景**
 

@@ -9,7 +9,8 @@ npm install
 ```
 
 1. 设断点
-2. F5启动(选择vscode-jest-test(simple-jest))
+2. **打开index.test.js**
+3. F5启动(选择vscode-jest-test(simple-jest))
 
 jest是facebook出品的单元测试框架
 
@@ -39,6 +40,7 @@ jest是facebook出品的单元测试框架
 - args jest运行时传入的参数
     - `--runInBand` 仅在当前的进程中连续运行所有测试，而非通过创建的子进程的工作池来运行测试
     - `--env`设置测试环境,默认是jsdom(类似浏览器环境),现改为node环境
+    - `${fileBasename}` 是当前打开文件的文件名
 - console 默认情况下调试时用的是内置的终端,即"调试控制台","integratedTerminal"将它改为当前的终端
 - internalConsoleOptions 由于上面console的设置,就要修改内置的终端的行为,设置它不开启
 

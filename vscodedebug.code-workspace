@@ -18,6 +18,9 @@
 		},
 		{
 			"path": "simple-jest"
+		},
+		{
+			"path": "jest-with-ts"
 		}
 	],
 	"settings": {
