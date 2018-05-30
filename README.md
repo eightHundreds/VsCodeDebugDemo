@@ -19,7 +19,7 @@
 **非基础场景**
 
 - [] jest-with-babel 使用babel的jest单元测试
-- [] jest-with-ts 使用typescript的单元测试
+- [x] jest-with-ts 使用typescript的单元测试
 
 
 
