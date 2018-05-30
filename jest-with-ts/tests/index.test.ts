@@ -1,4 +1,4 @@
-import { sum,sumAsync } from "./index";
+import { sum,sumAsync } from "../index";
 it("test sum", () => {
     expect(sum(1,2)).toBe(3)
 });
