@@ -2,6 +2,7 @@
 
 探究vscode的debug技巧
 每种场景都放到一个文件夹下
+你可以使用vscode单独地打开其中一个文件夹查看,也可以通过`文件->打开工作区`打开根目录下的vscodedebug.code-workspace
 
 # 场景列表
 
