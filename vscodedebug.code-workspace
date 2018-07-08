@@ -21,6 +21,12 @@
 		},
 		{
 			"path": "jest-with-ts"
+		},
+		{
+			"path": "jest-react-enzyme-babel"
+		},
+		{
+			"path": "wsl-simple-koa"
 		}
 	],
 	"settings": {

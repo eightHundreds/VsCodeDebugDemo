@@ -22,7 +22,7 @@ npm install
 3. F5(选择 `启动程序builded(koa-with-babel)`)
 4. 请求 http://localhost:10086
 
-## 演示3:babel-cli之bebel-node
+## 演示3:babel-cli之babel-node
 
 1. 打断点
 2. F5(选择 `启动程序with babel-node(koa-with-babel)`)
@@ -30,7 +30,7 @@ npm install
 
 # Babel
 
-babel的作用我不细讲,简单的说就是让你能用上新的语言特性,然而目前nodejs大部分es特性都能用了(但es的模块系统,即import,export,迟迟目前还是不能支持),具体请看[这里](https://node.green/)
+babel的作用我不细讲,简单的说就是让你能用上新的语言特性,目前nodejs大部分es特性都能用了(但es的模块系统,即import,export,目前还是不能支持),具体请看[这里](https://node.green/)
 
 所以一般情况下是不需要babel的,折腾它实在是太麻烦了,不如使用高版本的LTS
 但使用新特性的需求总是会有的
@@ -122,7 +122,7 @@ require('./app')
 
 后续过程就是 [演示1:babel-register](#演示1:babel-register)
 
-最后的结果其实还是差强人意,同步代码能很正常的运行,问题出在async function,如果你运行过演示会发现,在运行到await语句前,再按F10(步进)就会跳到方法名那里。再回头对比simple-koa-debug案例(不用babel),这里会很自然地,像同步代码一样走下去
+最后的结果其实还是差强人意,同步代码能很正常的运行,问题出在async function,如果你运行过演示会发现,在运行到await语句前,再按F10(步进)就会跳到方法名那里。再回头对比simple-koa案例(不用babel),这里会很自然地,像同步代码一样走下去
 
 这个问题至今没找到直接地解决办法,最后只能尽可能地不让babel编译async,所以修改下``.babelrc``,指定编译目标为当前node版本(我目前用的是v8.11.1)
 

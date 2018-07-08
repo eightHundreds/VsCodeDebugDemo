@@ -5,22 +5,21 @@
 
 # 场景列表
 
-我暂时将场景分为基础和非基础,基础场景的README会介绍的更详细.非基础场景可能就是由基础场景组合而成,我会假定你看过基础场景,在README中不会写得太详细
+我将场景按一定顺序排列,靠前的场景偏基础,靠后的场景是前面场景的组合.基础场景的README会写得更细,靠后的则写得简单(我是假设你看过前面的基础场景),你可以根据场景的名称,去看基础的场景,比如`jest-react-enzyme-babel`,你就需要先看`simple-koa`,`koa-with-babel`,`simple-jest`,`jest-with-babel`
 
-我选择koa作为主角,它是个非常简单的框架,简单地像个库,而且又有express的影子.所以不管你是想调试一个库,还是一个web应用,都能快速地从案例代码获得帮助
+我选择了特定的库作为主角,但如果你用其他的库也能从案例代码中获得帮助
 
-**基础场景**
+- koa 它是个非常简单的框架,简单地像个库,而且又有express的影子.所以不管你是想调试一个库,还是一个web应用,都能快速地从案例代码获得帮助
+
 
 - [X] simple-koa koajs应用的简单使用
 - [X] koa-with-babel 使用babel的koajs应用
 - [X] koa-with-ts 使用typescript的koajs应用
 - [x] simple-jest jest单元测试
-
-**非基础场景**
-
-- [] jest-with-babel 使用babel的jest单元测试
+- [x] *jest-with-babel 使用babel的jest单元测试*(未完成)
 - [x] jest-with-ts 使用typescript的单元测试
-
+- [x] wsl-simple-koa 用wsl中的node调试
+- [] jest-react-enzyme-babel 使用enzyme的react单元测试
 
 
 # 参考资料
@@ -36,6 +35,10 @@
     - vscode是自己实现的glob,所以与你在其他技术文档看的不一样,如果有稍微高级的需求,请看该[链接](https://github.com/Microsoft/vscode/blob/44aa6c8aac6207f4e4d057287fa8a4cca18c7550/src/vs/base/test/node/glob.test.ts)
 - launch.json的默认配置就是"默认用户设置"(F1 首选项:打开用户设置),比如launch.json的internalConsoleOptions对应用户设置的debug.internalConsoleOptions
 - [VSCode官方调试文档](https://code.visualstudio.com/docs/editor/debugging)
+
+# TODO
+
+- [] 在vscode中jest体验还是不够好,如何方便的过滤掉不想执行的测试?
 
 # [采坑记录](./采坑记录.md)
 

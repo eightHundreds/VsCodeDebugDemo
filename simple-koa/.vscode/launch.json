@@ -13,11 +13,11 @@
     {
       "type": "node",
       "request": "attach",
-      "name": "Attach via default debug port",
+      "name": "通过默认端口附加",
       "port": 9229
     },
     {
-      "name": "Attach to Process",
+      "name": "附加到进程",
       "type": "node",
       "request": "attach",
       "processId": "${command:PickProcess}"

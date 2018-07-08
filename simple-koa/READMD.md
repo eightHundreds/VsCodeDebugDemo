@@ -55,21 +55,21 @@ node --inspect .\index.js
 {
     "type": "node",
     "request": "attach",
-    "name": "Attach via default debug port",
+    "name": "通过默认端口附加",
     "port": 9229
 }
 ```
 port是调试的默认端口
 
 1. 启动应用`node --inspect .\index.js`
-2. 在调试面包选择`Attach via default debug port`F5启动调试
+2. 在调试面板选择`通过默认端口附加`F5启动调试
 
 你可以指定端口号(`node --inspect=12345 .\index.js`),但要确保与调试配置中`port`一样
 你也可以不通过端口附件,可以通过进程Id(被调试的node进程可以是不在调试模式的)
 
 ```
 {
-    "name": "Attach to Process",
+    "name": "附加到进程",
     "type": "node",
     "request": "attach",
     "processId": "53426"
