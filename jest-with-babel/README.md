@@ -3,6 +3,8 @@
 
 未完成,目前会出现,打到index.js中的断点在调试时会错乱的问题
 
+目前这个问题并未找到解决办法,[相关StackOverflow](https://stackoverflow.com/questions/48998572/jest-babel-in-vs-code-debugger-causes-breakpoints-to-move#)
+
 ```
 yarn install
 ```
