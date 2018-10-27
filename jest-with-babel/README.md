@@ -20,6 +20,8 @@ npm install
 
 #babel-jest
 
+待修改
+
 安装jest时会自动安装`babel-jest`,并且会自动读取默认路径下的.babelrc去编译你的代码,如果想取消这个行为
 ```
 // package.json
