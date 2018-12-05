@@ -62,7 +62,7 @@ npm install babel-register
 
 ### 安装与配置
 
-上文说的babel-cli和babel-register都需要配合`preset`就好比买了红白机就要买卡带
+用babel的地方都需要`.babelrc`,配置一般都需要配合`preset`,如果不使用preset,则要在plugins配置项中一个个指定要支持的语言特性,而`preset`作用就是批量添加
 preset可以是`babel-preset-es2015`,`babel-preset-stage-0`等,但现在都流行`babel-preset-env`
 
 
@@ -71,21 +71,22 @@ npm install babel-register babel-runtime
 npm install babel-preset-env babel-plugin-transform-runtime --save-dev
 ```
 
-- `babel-plugin-transform`不是必选的,但它有助于减少编译生成的代码和全局变量
+- `babel-plugin-transform-runtime`不是必选的,但它有助于减少编译生成的代码和全局变量
 - `babel-runtime`是生成环境下用的
 
 
 创建index.js
 ```
-require("babel-register")
+require("babel-register") // 实时转码,仅适合开发环境
 // require("babel-register")({/* 写配置,配置项包括了`.babelrc`的配置项,但是`.babelrc`优先级更高 */ })
 require('babel-polyfill')
 require('./app')
 ```
 
 - 在index.js不能用任何高级语法,但被index.js引用的文件就能用了
-- babel主要负责支持新语法,而新规范中引入的新的类(如Promise)则需要polyfill支持
-  - 在入口处导入`require('babel-polyfill')`
+- babel新规范中引入的新的类(如Promise)需要其他工具(毕竟这些代码不是编译出来,而是额外添加的),`babel-polyfill`和`babel-runtime`都是用来解决这个问题
+  - 在入口处导入`require('babel-polyfill')`,这是一种将代码注入到全局的行为,然后可以直接使用
+  - 使用`babel-runtim`,你需要自己手动`require('core-js/xxxx')`来添加新特性,使用`babel-plugin-transform-runtime`能帮你生成这些`require(...)`
   - `babel-runtime`与它并不冲突,在引入`babel-runtime`前,polyfill会以全局变量的形式注入,引入后则通过require导入,详情请看[官方文档](https://babeljs.cn/docs/plugins/transform-runtime#%E4%B8%BA%E4%BB%80%E4%B9%88),或者通过[演示2:babel-cli](#演示2:babel-cli)编译后的代码查看
 
 
