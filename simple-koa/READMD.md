@@ -77,3 +77,9 @@ port是调试的默认端口
 ```
 
 processId可以改为`${command:PickProcess}`这样启动调试时,vscode会让你从现在运行的进程中选择一个进程的进程Id
+
+
+## Chrome
+
+最新的Chrome也提供了调试工具
+打开Chrome DevTool 看看

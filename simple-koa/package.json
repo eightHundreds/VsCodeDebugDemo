@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "debug":"node --inspect index.js"
   },
   "author": "",
   "license": "MIT",
